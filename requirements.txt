@@ -1,6 +1,6 @@
-st_aggrid
-streamlit
-PIL
-cv2
+streamlit-aggrid
+streamlit 
+Pillow 
+opencv-python
 numpy
-pandas
+pandas 
