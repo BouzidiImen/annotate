@@ -1,0 +1,6 @@
+st_aggrid
+streamlit
+PIL
+cv2
+numpy
+pandas
