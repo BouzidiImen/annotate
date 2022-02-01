@@ -87,7 +87,7 @@ new_df = grid_return['data']
 df = df.loc[::-1].reset_index(drop=True)
 new_df[['Bottom', 'Left', 'Right', 'Top']] = df[['Bottom', 'Left', 'Right', 'Top']]
 st.download_button(
-    label="Download data as CSV",
+    label="Download the annotation",
     data=new_df.to_csv(),
     file_name=str(name) + '.csv'
 )
