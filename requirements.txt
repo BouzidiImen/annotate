@@ -1,6 +1,6 @@
 streamlit-aggrid
 streamlit 
 Pillow 
-opencv-python
+opencv-python-headless
 numpy
 pandas 
