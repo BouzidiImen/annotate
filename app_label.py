@@ -33,7 +33,7 @@ def get_words_pos(image):
     for c in count:
         x, y, w, h = cv2.boundingRect(c)
         cv2.rectangle(image, (x, y), (x + w, y + h), (60, 0, 0), 2)  # change to convenient number width
-        cv2.putText(image, str(i), (x - 2, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (223, 93, 25), 2)
+        cv2.putText(image, str(i), (x - 2, y), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (223, 93, 25), 2)
         df.loc[i] = (y + w, x + 10, x + h, y + 10)
         ROI = image[y:y + h, x:x + w]
         cv2.imwrite("imgs/" + str(i) + '.png', ROI)
@@ -84,5 +84,13 @@ for i in range(0,len(df)):
 grid_return = AgGrid(words, editable=True, fit_columns_on_grid_load = True,reload_data=False)
 new_df = grid_return['data']
 
+df = df.loc[::-1].reset_index(drop=True)
+new_df[['Bottom', 'Left', 'Right', 'Top']] = df[['Bottom', 'Left', 'Right', 'Top']]
+st.download_button(
+    label="Download data as CSV",
+    data=new_df.to_csv(),
+    file_name=str(name) + '.csv'
+)
+
 st.image(content,use_column_width=False)
-new_df.to_csv("labels_app/" + str(name) + ".csv", encoding="ISO-8859-1")
+#new_df.to_csv("labels_app/" + str(name) + ".csv", encoding="ISO-8859-1")
